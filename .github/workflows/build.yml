@@ -32,10 +32,8 @@ jobs:
         run: rustup toolchain install stable-i686-pc-windows-msvc
 
       - name: Extra dependencies (x86 Assembly)
+        uses: ilammy/setup-nasm@v1
         if: matrix.config.language == 'asm'
-        run: |
-          choco install -y nasm
-          echo "::add-path::C:\Program Files\NASM"
 
       - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
