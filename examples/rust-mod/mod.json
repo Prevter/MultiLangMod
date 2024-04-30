@@ -1,0 +1,9 @@
+{
+  "geode": "2.0.0-beta.25",
+  "gd": "2.204",
+  "version": "v1.0.0",
+  "id": "prevter.mod_in_rust",
+  "name": "Mod in Rust",
+  "developer": "Prevter",
+  "description": "Example mod written in Rust"
+}

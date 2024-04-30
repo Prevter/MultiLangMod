@@ -1,0 +1,10 @@
+cmake-*/
+build/
+out/
+bin/
+CMakeFiles/
+CMakeCache.txt
+
+.idea/
+.vscode/
+.vs/

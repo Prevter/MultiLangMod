@@ -1,0 +1,34 @@
+name: Build Geode Mod
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - name: C++
+            language: cpp
+          - name: C
+            language: c
+          - name: Rust
+            language: rust
+          - name: x86 Assembly
+            language: asm
+
+    name: ${{ matrix.config.name }}
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the mod
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          combine: true
+          configure-args: -DEXAMPLE_LANGUAGE=${{ matrix.config.language }}
