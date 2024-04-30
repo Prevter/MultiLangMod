@@ -27,6 +27,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Extra dependencies (Rust)
+        if: matrix.config.language == 'rust'
+        run: rustup toolchain install stable-i686-pc-windows-msvc
+
+      - name: Extra dependencies (x86 Assembly)
+        if: matrix.config.language == 'asm'
+        run: choco install nasm
+
       - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
         with:
