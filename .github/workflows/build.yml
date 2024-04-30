@@ -33,10 +33,13 @@ jobs:
 
       - name: Extra dependencies (x86 Assembly)
         if: matrix.config.language == 'asm'
-        run: choco install nasm
+        run: |
+          choco install -y nasm
+          echo "::add-path::C:\Program Files\NASM"
 
       - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
         with:
           combine: true
+          ccache-variant: ''
           configure-args: -DEXAMPLE_LANGUAGE=${{ matrix.config.language }}
